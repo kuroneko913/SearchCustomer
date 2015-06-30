@@ -1,0 +1,20 @@
+顧客の情報集めたい
+
+1.検索ワードが入力される（フォーマットを指定させる）(SearchString)
+	→1番目に住所・地名など、2番目にどんな店か（例：美容院）を空白区切りで。
+
+
+2.地名や市など、範囲が大きいものなら町まで指定できるようにAutoComplete APIを使っていい感じ検索ワードを作成。(makeSearchString)
+	→Google Places APIは同一クエリに対して、60件までしか返さないのでその対応。範囲が大きいと結果が多すぎる。
+	→(AutoComplete APIで)最大5件しか取得できないのでダメ。他の方法を考える。
+	→http://geoapi.heartrails.com/api.htmlがプロなので使う。
+
+3.作成された地名から2番目の引数と連結させて、Google Places APIを叩く。(getGoogleMapJson)
+	→テキスト検索しなくてもできる(APIの使用量を増やせる)
+
+4.一回叩くごとに、結果を処理していく。(parseJson, getHtmlinfo)
+	→店名をgoogle検索し、Googlemapには存在しない情報を集める。
+
+5.おしまい
+
+浜松市西区志都呂町
