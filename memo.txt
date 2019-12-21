@@ -1,20 +1,20 @@
-�ڋq�̏��W�߂���
+顧客の情報集めたい
 
-1.�������[�h�����͂����i�t�H�[�}�b�g���w�肳����j(SearchString)
-	��1�ԖڂɏZ���E�n���ȂǁA2�Ԗڂɂǂ�ȓX���i��F���e�@�j���󔒋�؂�ŁB
+1.検索ワードが入力される（フォーマットを指定させる）(SearchString)
+	→1番目に住所・地名など、2番目にどんな店か（例：美容院）を空白区切りで。
 
 
-2.�n����s�ȂǁA�͈͂��傫�����̂Ȃ璬�܂Ŏw��ł���悤��AutoComplete API���g���Ă��������������[�h���쐬�B(makeSearchString)
-	��Google Places API�͓���N�G���ɑ΂��āA60���܂ł����Ԃ��Ȃ��̂ł��̑Ή��B�͈͂��傫���ƌ��ʂ���������B
-	��(AutoComplete API��)�ő�5�������擾�ł��Ȃ��̂Ń_���B���̕��@���l����B
-	��http://geoapi.heartrails.com/api.html���v���Ȃ̂Ŏg���B
+2.地名や市など、範囲が大きいものなら町まで指定できるようにAutoComplete APIを使っていい感じ検索ワードを作成。(makeSearchString)
+	→Google Places APIは同一クエリに対して、60件までしか返さないのでその対応。範囲が大きいと結果が多すぎる。
+	→(AutoComplete APIで)最大5件しか取得できないのでダメ。他の方法を考える。
+	→http://geoapi.heartrails.com/api.htmlがプロなので使う。
 
-3.�쐬���ꂽ�n������2�Ԗڂ̈����ƘA�������āAGoogle Places API��@���B(getGoogleMapJson)
-	���e�L�X�g�������Ȃ��Ă��ł���(API�̎g�p�ʂ𑝂₹��)
+3.作成された地名から2番目の引数と連結させて、Google Places APIを叩く。(getGoogleMapJson)
+	→テキスト検索しなくてもできる(APIの使用量を増やせる)
 
-4.���@�����ƂɁA���ʂ��������Ă����B(parseJson, getHtmlinfo)
-	���X����google�������AGooglemap�ɂ͑��݂��Ȃ������W�߂�B
+4.一回叩くごとに、結果を処理していく。(parseJson, getHtmlinfo)
+	→店名をgoogle検索し、Googlemapには存在しない情報を集める。
 
-5.�����܂�
+5.おしまい
 
-�l���s����u�s�C��
+浜松市西区志都呂町
